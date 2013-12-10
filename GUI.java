@@ -6,8 +6,7 @@ public class GUI extends JFrame implements ActionListener {
 
     public JFrame mainframe;
     public JButton addTeam, search, viewTeams, configure;
-    public static JTextField teamNumber;//bvnv
-    TeamFile teamFile = new TeamFile();
+    public static JTextField teamNumber;
 
     private static final long serialVersionUID = 1L;
 
@@ -60,8 +59,7 @@ public class GUI extends JFrame implements ActionListener {
 
         }
         else if(e.getSource() == viewTeams) {
-            
-            //TeamListWindow tlw = new TeamListWindow(
+
         }
         else if(e.getSource() == configure) {
             ConfigureWindow cw = new ConfigureWindow();
