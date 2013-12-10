@@ -1,12 +1,22 @@
 import java.io.*;
 import java.util.*;
 
-public class TeamFile {
-
+public class TeamFile 
+{
+    private String filePath;
+    private String name;
+    private String number;
+    
+    public TeamFile(String path)
+    {
+        filePath = path;
+        load(path + ".xml");
+    }
+    
     Properties properties = new Properties();
-    public void save(String key, String value) {
-
-        String path = "teams/" + GUI.teamNumber.getText() + ".xml";
+    public void save(String key, String value) 
+    {
+        String path = "teams/" + filePath + ".xml";
         try {
             File file = new File(path);
             boolean exist = file.exists();
@@ -22,30 +32,22 @@ public class TeamFile {
         }
     }
 
-    public void load(String path) {
-        try {
+    public void load(String path) 
+    {
+        try 
+        {
             InputStream read = new FileInputStream(path);
             properties.loadFromXML(read);
             String teamName = properties.getProperty("Team Name");
             String teamNumber = properties.getProperty("Team Number");
-            String numberOfWins = properties.getProperty("Number of Wins");
-            String numberOfLosses = properties.getProperty("Number of Losses");
-            String averageScore = properties.getProperty("Average Score");
-            String averageDifference = properties.getProperty("Average Difference");
-            String allianceScore = properties.getProperty("Alliance Scores");
-            String opponentsScore = properties.getProperty("Opponents Scores");
-            setTeamDetails(teamName, teamNumber, Integer.parseInt(numberOfWins), Integer.parseInt(numberOfLosses), Integer.parseInt(averageScore), Integer.parseInt(averageDifference), allianceScore, opponentsScore);
+            setTeamDetails(teamName, teamNumber);
             read.close();
-        } catch (FileNotFoundException e) {
+        } 
+        catch (FileNotFoundException e) 
+        {
             System.out.println("File not Found");
             save("Team Name", "New Team");
-            save("Team Number", GUI.teamNumber.getText());
-            save("Number of Wins", "0");
-            save("Number of Losses", "0");
-            save("Average Score", "0");
-            save("Average Difference", "0");
-            save("Alliance Scores", "0 ");
-            save("Opponents Scores", "0 ");
+            save("Team Number", filePath);
             load(path);
         } catch (IOException e) {
             e.printStackTrace();
@@ -53,15 +55,25 @@ public class TeamFile {
         }
     }
 
-    public void setTeamDetails(String name, String number, int wins, int losses, int avgScore, int avgDiff, String allScores, String oppScores) {
-        TeamWindow.teamName = name;
-        TeamWindow.teamNumber = number;
-        TeamWindow.numberOfWins = wins;
-        TeamWindow.numberOfLosses = losses;
-        TeamWindow.averageScore = avgScore;
-        TeamWindow.averageDifference = avgDiff;
-        TeamWindow.allianceScoreString = allScores;
-        TeamWindow.opponentsScoreString = oppScores;
+    public void setTeamDetails(String name, String number) 
+    {
+         this.name = name;
+         this.number = number;
     }
-
+    
+    public String getName()
+    {
+        return name;
+    }
+    
+    public String getNumber()
+    {
+        return number;
+    }
+    
+    public void changeName(String name)
+    {
+        this.name = name;
+        save("Team Name", name);
+    }
 }
