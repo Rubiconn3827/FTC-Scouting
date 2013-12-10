@@ -5,8 +5,8 @@ import java.awt.*;
 public class GUI extends JFrame implements ActionListener {
 
     public JFrame mainframe;
-    public JButton addTeam, search;
-    public static JTextField teamNumber;
+    public JButton addTeam, search, viewTeams, configure;
+    public static JTextField teamNumber;//bvnv
     TeamFile teamFile = new TeamFile();
 
     private static final long serialVersionUID = 1L;
@@ -27,18 +27,23 @@ public class GUI extends JFrame implements ActionListener {
         mainframe.setLocationRelativeTo(null);
 
         JPanel titlePanel = new JPanel(new FlowLayout());
-        titlePanel.add(new JLabel("FTC Block Party Scouting"));
+        titlePanel.add(new JLabel("FTC Scouting"));
 
         teamNumber = new JTextField("Team Number");
-        mainframe.add(teamNumber);
+        mainframe.add(teamNumber, BorderLayout.CENTER);
 
-        JPanel buttonPanel = new JPanel(new FlowLayout());
+        JPanel buttonPanel = new JPanel(new GridBagLayout());
         addTeam = new JButton("Add Team");
         addTeam.addActionListener(this);
         search = new JButton("Search");
         search.addActionListener(this);
+        viewTeams = new JButton("View Teams");
+        viewTeams.addActionListener(this);
+        configure = new JButton("Configure");
         buttonPanel.add(addTeam);
+        buttonPanel.add(viewTeams);
         buttonPanel.add(search);
+        buttonPanel.add(configure);
 
         mainframe.add(buttonPanel, BorderLayout.SOUTH);
         mainframe.add(titlePanel, BorderLayout.NORTH);
@@ -49,12 +54,17 @@ public class GUI extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == addTeam) {
-            this.setVisible(false);
-            this.dispose();
             AddTeamWindow aw = new AddTeamWindow();
         }
-        else if(e.getSource().equals("Search")) { 
+        else if(e.getSource() == search) { 
 
+        }
+        else if(e.getSource() == viewTeams) {
+            
+            //TeamListWindow tlw = new TeamListWindow(
+        }
+        else if(e.getSource() == configure) {
+            ConfigureWindow cw = new ConfigureWindow();
         }
     }
 

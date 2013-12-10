@@ -7,10 +7,8 @@ import java.io.*;
 public class AddTeamWindow extends JFrame implements ActionListener {
     
     protected JFrame window;
-    protected JTextArea nameText, numberText;
+    protected JTextField nameText, numberText;
     protected JButton save, cancel;
-    
-    TeamFile teamFile = new TeamFile();
     
     @SuppressWarnings("Unchecked")
     
@@ -32,9 +30,9 @@ public class AddTeamWindow extends JFrame implements ActionListener {
         buttonPanel.add(cancel);
         
         JPanel textAreaPanel = new JPanel(new FlowLayout());
-        nameText = new JTextArea("Team Name");
+        nameText = new JTextField("Team Name");
         nameText.setSize(nameText.getPreferredSize());
-        numberText = new JTextArea("Team Number");
+        numberText = new JTextField("Team Number");
         textAreaPanel.add(nameText);
         textAreaPanel.add(numberText);
         
@@ -49,17 +47,13 @@ public class AddTeamWindow extends JFrame implements ActionListener {
     
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == save) {
-            writeXML();
+            //XMLEditor editor = new XMLEditor(new TeamFile(numberText.getText()));
+            //editor.changeName(nameText.getText());
             window.dispose();
         }
         else if(e.getSource() == cancel) {
-            window.setVisible(false);
             window.dispose();
         }
     }
     
-    public void writeXML() {
-        teamFile.load("teams/" + GUI.teamNumber.getText() + ".xml");
-        dispose();
-    }
 }
