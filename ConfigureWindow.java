@@ -6,14 +6,16 @@ public class ConfigureWindow extends JFrame implements ActionListener {
 
     protected JFrame window;
     protected JComboBox irAuto;
+    protected JButton save;
 
     protected String[] irArray = new String[2];
 
+    @SuppressWarnings("Unchecked")
     public ConfigureWindow() {
         window = new JFrame("Configuration");
         window.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        window.setLocationRelativeTo(null);
         window.getContentPane().setLayout(new BorderLayout());
+        window.setLocationRelativeTo(null);
 
         irArray[0] = "Yes";
         irArray[1] = "No";
@@ -22,16 +24,27 @@ public class ConfigureWindow extends JFrame implements ActionListener {
         irAuto.addActionListener(this);
         JPanel buttonPanel = new JPanel(new FlowLayout());
         buttonPanel.add(irAuto);
+
+        save = new JButton("Save");
+        save.addActionListener(this);
+        JPanel savePanel = new JPanel(new FlowLayout());
+        savePanel.add(save);
         
-        window.add(buttonPanel, BorderLayout.SOUTH);
+        JPanel titlePanel = new JPanel(new FlowLayout());
+        titlePanel.add(new JLabel("Configure"));
+
+        window.add(titlePanel, BorderLayout.NORTH);
+        window.add(buttonPanel, BorderLayout.CENTER);
+        window.add(savePanel, BorderLayout.SOUTH);
 
         window.pack();
         window.show();
-        
     }
 
     public void actionPerformed(ActionEvent e) {
-
+        if(e.getSource() == save) {
+            window.dispose();
+        }
     }
 
 }
