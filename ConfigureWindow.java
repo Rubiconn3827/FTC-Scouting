@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
-
+@SuppressWarnings("unchecked")
 public class ConfigureWindow extends JFrame implements ActionListener {
 
     protected JFrame window;
@@ -9,13 +9,23 @@ public class ConfigureWindow extends JFrame implements ActionListener {
     protected JButton save;
 
 
-    @SuppressWarnings("Unchecked")
+    
     public ConfigureWindow() {
         window = new JFrame("Configuration");
         window.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         window.getContentPane().setLayout(new BorderLayout());
         window.setLocationRelativeTo(null);
+        window.setVisible(true);
 
+<<<<<<< HEAD
+        irArray[0] = "Yes";
+        irArray[1] = "No";
+        //irAuto = new JComboBox(irArray);
+        //irAuto.setSelectedIndex(2);
+        //irAuto.addActionListener(this);
+        //JPanel buttonPanel = new JPanel(new FlowLayout());
+        //buttonPanel.add(irAuto);
+=======
         JPanel buttonPanel = new JPanel(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         
@@ -79,6 +89,7 @@ public class ConfigureWindow extends JFrame implements ActionListener {
         c.gridx = 2;
         c.gridy = 3;
         buttonPanel.add(flagSpin, c);
+>>>>>>> f90d967ecc22b991b4ef64e578b353c27064be55
 
         save = new JButton("Save");
         save.addActionListener(this);
@@ -89,7 +100,11 @@ public class ConfigureWindow extends JFrame implements ActionListener {
         titlePanel.add(new JLabel("Configure"));
 
         window.add(titlePanel, BorderLayout.NORTH);
+<<<<<<< HEAD
+        //window.add(buttonPanel, BorderLayout.CENTER);
+=======
         window.add(buttonPanel, BorderLayout.LINE_START);
+>>>>>>> f90d967ecc22b991b4ef64e578b353c27064be55
         window.add(savePanel, BorderLayout.SOUTH);
 
         window.pack();
