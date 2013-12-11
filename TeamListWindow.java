@@ -7,6 +7,7 @@ import java.util.*;
 
 public class TeamListWindow extends JFrame implements ActionListener{
     ArrayList<TeamFile> fileArray;
+    Properties properties = new Properties();
 
     public void addTeam(String number)
     {
@@ -18,6 +19,24 @@ public class TeamListWindow extends JFrame implements ActionListener{
         return fileArray;
     }
 
+    public void save(String key, String value) 
+    {
+        String path = System.getProperty("user.dir") + "/teams/" + filePath + ".xml";
+        try {
+            File file = new File(path);
+            boolean exist = file.exists();
+            if(!exist) {
+                file.createNewFile();
+            }
+            OutputStream write = new FileOutputStream(path);
+            properties.setProperty(key, value);
+            properties.storeToXML(write, filePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Failed to save the team's file.");
+        }
+    }
+    
     public void save()
     {
         try
@@ -38,6 +57,35 @@ public class TeamListWindow extends JFrame implements ActionListener{
         {
             e.printStackTrace();
             System.out.println("Failed to write to file: Save");
+        }
+    }
+    
+    public void load() 
+    {
+        try 
+        {
+            System.getProperty("user.dir") + "/teams/" + number + ".xml");
+            InputStream read = new FileInputStream(System.getProperty("user.dir") + "/teams/teams.xml");
+            properties.loadFromXML(read);
+            for(int i = 0; i < 10000; i++)
+            {
+                if(new File(System.getProperty("user.dir") + "/teams/" + i + ".xml")) {
+                    
+                }
+            }
+            String teamName = properties.getProperty(number);
+            setTeamDetails(teamName, teamNumber);
+            read.close();
+        } 
+        catch (FileNotFoundException e) 
+        {
+            System.out.println("File not Found: Load");
+            save("Team Name", "New Team");
+            save("Team Number", filePath);
+            load(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Failure to read file: Load");
         }
     }
 
