@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
-
 public class ConfigureWindow extends JFrame implements ActionListener {
 
     protected JFrame window;
@@ -10,7 +9,6 @@ public class ConfigureWindow extends JFrame implements ActionListener {
 
     protected String[] irArray = new String[2];
 
-    @SuppressWarnings("Unchecked")
     public ConfigureWindow() {
         window = new JFrame("Configuration");
         window.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
