@@ -31,7 +31,7 @@ public class GUI extends JFrame implements ActionListener {
         teamNumber = new JTextField("Team Number");
         mainframe.add(teamNumber, BorderLayout.CENTER);
 
-        JPanel buttonPanel = new JPanel(new GridBagLayout());
+        JPanel buttonPanel = new JPanel(new FlowLayout());
         addTeam = new JButton("Add Team");
         addTeam.addActionListener(this);
         search = new JButton("Search");
@@ -39,6 +39,7 @@ public class GUI extends JFrame implements ActionListener {
         viewTeams = new JButton("View Teams");
         viewTeams.addActionListener(this);
         configure = new JButton("Configure");
+        configure.addActionListener(this);
         buttonPanel.add(addTeam);
         buttonPanel.add(viewTeams);
         buttonPanel.add(search);
@@ -56,7 +57,7 @@ public class GUI extends JFrame implements ActionListener {
             AddTeamWindow aw = new AddTeamWindow();
         }
         else if(e.getSource() == search) { 
-
+            ViewTeamWindow vtw = new ViewTeamWindow();
         }
         else if(e.getSource() == viewTeams) {
 
