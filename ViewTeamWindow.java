@@ -9,6 +9,8 @@ public class ViewTeamWindow extends JFrame implements ActionListener {
     protected JLabel wins, losses, penalties, irauto, ramp, fspin, hang, pscore, fscore;
     protected JTextField winsf, lossesf, penaltiesf, irautof, rampf, fspinf, hangf, pscoref, fscoref;
     protected boolean isEditing = false;
+    String teamNameS = " Empty ";
+    String teamNumberS = " Empty ";
 
     public ViewTeamWindow() {
 
@@ -17,6 +19,12 @@ public class ViewTeamWindow extends JFrame implements ActionListener {
         window.setLocationRelativeTo(null);
         window.getContentPane().setLayout(new BorderLayout());
 
+        JPanel titlePanel = new JPanel(new FlowLayout());
+        JLabel teamName = new JLabel(teamNameS);
+        JLabel teamNumber = new JLabel(teamNumberS);
+        titlePanel.add(teamName);
+        titlePanel.add(teamNumber);
+        
         JPanel infoPanel = new JPanel(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
@@ -42,73 +50,73 @@ public class ViewTeamWindow extends JFrame implements ActionListener {
 
         c.gridx = 0;
         c.gridy = 4;
-        losses = new JLabel(" Penalties: ");
-        lossesf = new JTextField(" Empty ");
-        infoPanel.add(losses, c);
+        penalties = new JLabel(" Penalties: ");
+        penaltiesf = new JTextField(" Empty ");
+        infoPanel.add(penalties, c);
         c.gridx = 1;
         c.gridy = 4;
-        infoPanel.add(lossesf, c);
-        lossesf.setEditable(false);
+        infoPanel.add(penaltiesf, c);
+        penaltiesf.setEditable(false);
 
         c.gridx = 2;
         c.gridy = 0;
-        losses = new JLabel(" IR Autonomous: ");
-        lossesf = new JTextField(" Empty ");
-        infoPanel.add(losses, c);
+        irauto = new JLabel(" IR Autonomous: ");
+        irautof = new JTextField(" Empty ");
+        infoPanel.add(irauto, c);
         c.gridx = 3;
         c.gridy = 0;
-        infoPanel.add(lossesf, c);
-        lossesf.setEditable(false);
+        infoPanel.add(irautof, c);
+        irautof.setEditable(false);
 
         c.gridx = 2;
         c.gridy = 2;
-        losses = new JLabel(" Ramp: ");
-        lossesf = new JTextField(" Empty ");
-        infoPanel.add(losses, c);
+        ramp = new JLabel(" Ramp: ");
+        rampf = new JTextField(" Empty ");
+        infoPanel.add(ramp, c);
         c.gridx = 3;
         c.gridy = 2;
-        infoPanel.add(lossesf, c);
-        lossesf.setEditable(false);
+        infoPanel.add(rampf, c);
+        rampf.setEditable(false);
 
         c.gridx = 2;
         c.gridy = 4;
-        losses = new JLabel(" Flag Spin: ");
-        lossesf = new JTextField(" Empty ");
-        infoPanel.add(losses, c);
+        fspin = new JLabel(" Flag Spin: ");
+        fspinf = new JTextField(" Empty ");
+        infoPanel.add(fspin, c);
         c.gridx = 3;
         c.gridy = 4;
-        infoPanel.add(lossesf, c);
-        lossesf.setEditable(false);
+        infoPanel.add(fspinf, c);
+        fspinf.setEditable(false);
 
         c.gridx = 4;
         c.gridy = 0;
-        losses = new JLabel(" Hang: ");
-        lossesf = new JTextField(" Empty ");
-        infoPanel.add(losses, c);
+        hang = new JLabel(" Hang: ");
+        hangf = new JTextField(" Empty ");
+        infoPanel.add(hang, c);
         c.gridx = 5;
         c.gridy = 0;
-        infoPanel.add(lossesf, c);
-        lossesf.setEditable(false);
+        infoPanel.add(hangf, c);
+        hangf.setEditable(false);
 
         c.gridx = 4;
         c.gridy = 2;
-        losses = new JLabel(" Pendulum Score: ");
-        lossesf = new JTextField(" Empty ");
-        infoPanel.add(losses, c);
+        pscore = new JLabel(" Pendulum Score: ");
+        pscoref = new JTextField(" Empty ");
+        infoPanel.add(pscore, c);
         c.gridx = 5;
         c.gridy = 2;
-        infoPanel.add(lossesf, c);
-        lossesf.setEditable(false);
+        infoPanel.add(pscoref, c);
+        pscoref.setEditable(false);
 
         c.gridx = 4;
         c.gridy = 4;
-        losses = new JLabel(" Floor Goal Score: ");
-        lossesf = new JTextField(" Empty ");
-        infoPanel.add(losses, c);
+        fscore = new JLabel(" Floor Goal Score: ");
+        fscoref = new JTextField(" Empty ");
+        infoPanel.add(fscore, c);
         c.gridx = 5;
         c.gridy = 4;
-        infoPanel.add(lossesf, c);
-        lossesf.setEditable(false);
+        infoPanel.add(fscoref, c);
+        fscoref.setEditable(false);
 
         JPanel buttonPanel = new JPanel(new FlowLayout());
         edit2 = new JButton("Edit");
@@ -120,6 +128,7 @@ public class ViewTeamWindow extends JFrame implements ActionListener {
 
         window.add(buttonPanel, BorderLayout.SOUTH);
         window.add(infoPanel, BorderLayout.CENTER);
+        window.add(titlePanel, BorderLayout.NORTH);
         window.pack();
         window.show();
     }

@@ -1,6 +1,12 @@
 #BlueJ class context
-comment0.params=teamFileArray
-comment0.target=TeamListWindow(TeamFile[])
-comment1.params=e
-comment1.target=void\ actionPerformed(java.awt.event.ActionEvent)
-numComments=2
+comment0.params=a
+comment0.target=TeamListWindow(java.util.ArrayList)
+comment1.params=tf
+comment1.target=void\ addEntry(TeamFile)
+comment2.params=
+comment2.target=void\ makeEntries()
+comment3.params=e
+comment3.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment4.params=tf
+comment4.target=void\ delete(TeamFile)
+numComments=5

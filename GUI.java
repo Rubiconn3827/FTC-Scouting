@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
+import java.util.*;
 
 public class GUI extends JFrame implements ActionListener {
 
@@ -18,12 +19,17 @@ public class GUI extends JFrame implements ActionListener {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Broken.");
+
         }
         mainframe = new JFrame("FTC Scouting");
         mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainframe.getContentPane().setLayout(new BorderLayout());
         mainframe.setLocationRelativeTo(null);
+
+        ImageIcon image = new ImageIcon("src/firstlogo.jpg");
+        JLabel label = new JLabel("", image, JLabel.CENTER);
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.add( label, BorderLayout.CENTER );
 
         JPanel titlePanel = new JPanel(new FlowLayout());
         titlePanel.add(new JLabel("FTC Scouting"));
@@ -46,7 +52,7 @@ public class GUI extends JFrame implements ActionListener {
         buttonPanel.add(configure);
 
         mainframe.add(buttonPanel, BorderLayout.SOUTH);
-        mainframe.add(titlePanel, BorderLayout.NORTH);
+        mainframe.add(panel, BorderLayout.NORTH);
 
         mainframe.pack();
         mainframe.show();
@@ -60,7 +66,7 @@ public class GUI extends JFrame implements ActionListener {
             ViewTeamWindow vtw = new ViewTeamWindow();
         }
         else if(e.getSource() == viewTeams) {
-
+            //TeamListWindow tlw = new TeamListWindow();
         }
         else if(e.getSource() == configure) {
             ConfigureWindow cw = new ConfigureWindow();
