@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=
+comment0.target=ViewTeamWindow()
+comment1.params=
+comment1.target=void\ switchEdit()
+comment2.params=
+comment2.target=void\ makeEditable()
+comment3.params=
+comment3.target=void\ makeUneditable()
+comment4.params=e
+comment4.target=void\ actionPerformed(java.awt.event.ActionEvent)
+numComments=5

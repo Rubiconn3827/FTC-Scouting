@@ -5,10 +5,9 @@ import java.awt.*;
 public class ConfigureWindow extends JFrame implements ActionListener {
 
     protected JFrame window;
-    protected JComboBox irAuto;
+    protected Choice irAuto, rAuto, pScore, fScore, barHang, flagSpin;
     protected JButton save;
 
-    protected String[] irArray = new String[2];
 
     
     public ConfigureWindow() {
@@ -18,6 +17,7 @@ public class ConfigureWindow extends JFrame implements ActionListener {
         window.setLocationRelativeTo(null);
         window.setVisible(true);
 
+<<<<<<< HEAD
         irArray[0] = "Yes";
         irArray[1] = "No";
         //irAuto = new JComboBox(irArray);
@@ -25,6 +25,71 @@ public class ConfigureWindow extends JFrame implements ActionListener {
         //irAuto.addActionListener(this);
         //JPanel buttonPanel = new JPanel(new FlowLayout());
         //buttonPanel.add(irAuto);
+=======
+        JPanel buttonPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        
+        c.gridx = 0;
+        c.gridy = 0;
+        buttonPanel.add(new JLabel(" IR Autonomous "), c);
+        irAuto = new Choice();
+        irAuto.addItem("Yes");
+        irAuto.addItem("No");
+        c.gridx = 0;
+        c.gridy = 1;
+        buttonPanel.add(irAuto, c);
+        
+        c.gridx = 1;
+        c.gridy = 0;
+        buttonPanel.add(new JLabel(" Ramp Autonomous "), c);
+        rAuto = new Choice();
+        rAuto.addItem("Yes");
+        rAuto.addItem("No");
+        c.gridx = 1;
+        c.gridy = 1;
+        buttonPanel.add(rAuto, c);
+        
+        
+        c.gridx = 2;
+        c.gridy = 0;
+        buttonPanel.add(new JLabel(" Pendulum Score "), c);
+        pScore = new Choice();
+        pScore.addItem("Yes");
+        pScore.addItem("No");
+        c.gridx = 2;
+        c.gridy = 1;
+        buttonPanel.add(pScore, c);
+        
+        c.gridx = 0;
+        c.gridy = 2;
+        buttonPanel.add(new JLabel(" Floor Goal Score "), c);
+        fScore = new Choice();
+        fScore.addItem("Yes");
+        fScore.addItem("No");
+        c.gridx = 0;
+        c.gridy = 3;
+        buttonPanel.add(fScore, c);
+        
+        c.gridx = 1;
+        c.gridy = 2;
+        buttonPanel.add(new JLabel(" Bar Hang "), c);
+        barHang = new Choice();
+        barHang.addItem("Yes");
+        barHang.addItem("No");
+        c.gridx = 1;
+        c.gridy = 3;
+        buttonPanel.add(barHang, c);
+        
+        c.gridx = 2;
+        c.gridy = 2;
+        buttonPanel.add(new JLabel(" Flag Raise "), c);
+        flagSpin = new Choice();
+        flagSpin.addItem("Yes");
+        flagSpin.addItem("No");
+        c.gridx = 2;
+        c.gridy = 3;
+        buttonPanel.add(flagSpin, c);
+>>>>>>> f90d967ecc22b991b4ef64e578b353c27064be55
 
         save = new JButton("Save");
         save.addActionListener(this);
@@ -35,7 +100,11 @@ public class ConfigureWindow extends JFrame implements ActionListener {
         titlePanel.add(new JLabel("Configure"));
 
         window.add(titlePanel, BorderLayout.NORTH);
+<<<<<<< HEAD
         //window.add(buttonPanel, BorderLayout.CENTER);
+=======
+        window.add(buttonPanel, BorderLayout.LINE_START);
+>>>>>>> f90d967ecc22b991b4ef64e578b353c27064be55
         window.add(savePanel, BorderLayout.SOUTH);
 
         window.pack();
