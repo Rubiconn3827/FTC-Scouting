@@ -48,9 +48,8 @@ public class AddTeamWindow extends JFrame implements ActionListener {
     
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == save) {
-            //XMLEditor editor = new XMLEditor(new TeamFile(numberText.getText()));
-            //editor.changeName(nameText.getText());
-            GUI.tlw.writeToFile(numberText.getText());
+            GUI.tlw.addTeam(numberText.getText());
+            GUI.tlw.save();
             window.dispose();
         }
         else if(e.getSource() == cancel) {
