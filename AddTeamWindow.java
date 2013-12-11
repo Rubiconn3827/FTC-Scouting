@@ -40,6 +40,7 @@ public class AddTeamWindow extends JFrame implements ActionListener {
         window.add(textAreaPanel, BorderLayout.CENTER);
         window.add(titlePanel, BorderLayout.NORTH);
         
+        
 		
         window.pack();
         window.show();
@@ -49,6 +50,7 @@ public class AddTeamWindow extends JFrame implements ActionListener {
         if(e.getSource() == save) {
             //XMLEditor editor = new XMLEditor(new TeamFile(numberText.getText()));
             //editor.changeName(nameText.getText());
+            GUI.tlw.writeToFile(numberText.getText());
             window.dispose();
         }
         else if(e.getSource() == cancel) {

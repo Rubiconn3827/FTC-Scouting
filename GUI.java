@@ -8,6 +8,7 @@ public class GUI extends JFrame implements ActionListener {
     public JFrame mainframe;
     public JButton addTeam, search, viewTeams, configure;
     public static JTextField teamNumber;
+    public static TeamListWindow tlw;
 
     private static final long serialVersionUID = 1L;
 
@@ -54,10 +55,19 @@ public class GUI extends JFrame implements ActionListener {
         mainframe.add(buttonPanel, BorderLayout.SOUTH);
         mainframe.add(panel, BorderLayout.NORTH);
 
+        tlw = new TeamListWindow();
+        tlw.setVisible(false);
+        
         mainframe.pack();
         mainframe.show();
     }
 
+    public void windowClosing(WindowEvent e) {
+        if(e.getSource() == JFrame.EXIT_ON_CLOSE) {
+            tlw.saveArrayList();
+        }
+    }
+    
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == addTeam) {
             AddTeamWindow aw = new AddTeamWindow();
@@ -66,7 +76,7 @@ public class GUI extends JFrame implements ActionListener {
             ViewTeamWindow vtw = new ViewTeamWindow();
         }
         else if(e.getSource() == viewTeams) {
-            //TeamListWindow tlw = new TeamListWindow();
+            tlw.setVisible(true);
         }
         else if(e.getSource() == configure) {
             ConfigureWindow cw = new ConfigureWindow();

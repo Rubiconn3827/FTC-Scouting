@@ -6,14 +6,7 @@ import java.awt.*;
 import java.util.*;
 
 public class TeamListWindow extends JFrame implements ActionListener {
-<<<<<<< HEAD
     ArrayList<TeamFile> fileArray;
-
-    public TeamListWindow() 
-    {
-        fileArray = new ArrayList<TeamFile>();
-        loadFileToArray();
-    }
 
     public void addTeam(String number)
     {
@@ -30,9 +23,9 @@ public class TeamListWindow extends JFrame implements ActionListener {
         try
         {
             BufferedWriter writer = new BufferedWriter(new FileWriter(System.getProperty("user.dir") + "/teams/teams.txt"));
-            System.out.println();
             writer.write(info);
             writer.newLine();
+            addTeam(info);
             writer.close();
         }
         catch(Exception e)
@@ -74,56 +67,53 @@ public class TeamListWindow extends JFrame implements ActionListener {
         catch(Exception e)
         {
             e.printStackTrace();
-             System.out.println("Failed to read file: Read");
-=======
-
-    ArrayList<TeamFile> teamList;
+            System.out.println("Failed to read file: Read");
+        }
+    }
 
     protected JFrame window = new JFrame("Team List");
     GridBagConstraints c = new GridBagConstraints();
     protected JButton back;
     int y = 0;
 
-    public TeamListWindow(ArrayList<TeamFile> a) {
-        teamList = new ArrayList<TeamFile>();
-        window.getContentPane().setLayout(new GridBagLayout());
-        window.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        window.setLocationRelativeTo(null);
+    public TeamListWindow() {
+        fileArray = new ArrayList<TeamFile>();
+        loadFileToArray();
+        getContentPane().setLayout(new GridBagLayout());
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null);
 
         back = new JButton("Back");
         JPanel buttonPanel = new JPanel(new FlowLayout());
         back.addActionListener(this);
-        buttonPanel.add(back);
+        buttonPanel.add(back, c);
         makeEntries();
         c.gridx = 0;
         c.gridy = y;
-        window.add(buttonPanel, c);
+        add(buttonPanel);
 
-        window.pack();
-        window.show();
+        pack();
+        show();
     }
 
     private void addEntry(TeamFile tf) {
         entry e = new entry(tf);
         c.gridy = y;
         c.gridx = 0;
-        window.add(e, c);
+        add(e, c);
     }
 
     private void makeEntries() {
-        for(TeamFile a : teamList) {
+        for(TeamFile a : fileArray) {
             addEntry(a);
             y++;
->>>>>>> f90d967ecc22b991b4ef64e578b353c27064be55
         }
     }
 
     public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-    }
-=======
+
         if(e.getSource() == back) {
-            window.dispose();
+            window.setVisible(false);
         }
     }
 
@@ -138,16 +128,16 @@ public class TeamListWindow extends JFrame implements ActionListener {
 
         public entry(TeamFile tf) {
             teamFile = tf;
-            JPanel entryPanel = new JPanel(new FlowLayout());
+            setLayout(new FlowLayout());
             JLabel teamName = new JLabel(tf.getName());
             JLabel teamNumber = new JLabel(tf.getNumber());
             view = new JButton("View");
             delete = new JButton("Delete");
-            entryPanel.add(teamName);
-            entryPanel.add(teamNumber);
-            entryPanel.add(view);
-            entryPanel.add(delete);
-            entryPanel.show();
+            add(teamName);
+            add(teamNumber);
+            add(view);
+            add(delete);
+            show();
         }
 
         public void actionPerformed(ActionEvent e) {
@@ -160,6 +150,4 @@ public class TeamListWindow extends JFrame implements ActionListener {
         }
 
     }
-
->>>>>>> f90d967ecc22b991b4ef64e578b353c27064be55
 }
