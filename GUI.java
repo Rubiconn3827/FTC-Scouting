@@ -96,13 +96,6 @@ public class GUI extends JFrame implements ActionListener {
         
     }
 
-    public void windowClosing(WindowEvent e) {
-        if(e.getSource() == JFrame.EXIT_ON_CLOSE) {
-            System.out.println("lets");
-            tlw.save();
-        }
-    }
-
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == addTeam) {
             AddTeamWindow aw = new AddTeamWindow();
@@ -112,7 +105,7 @@ public class GUI extends JFrame implements ActionListener {
             ViewTeamWindow vtw = new ViewTeamWindow();
         }
         else if(e.getSource() == viewTeams) {
-            tlw.load();
+            //tlw.load();
             tlw.setVisible(true);
             tlw.repaint();
         }
@@ -120,7 +113,6 @@ public class GUI extends JFrame implements ActionListener {
             ConfigureWindow cw = new ConfigureWindow();
         }
         else if(e.getSource() == quit) {
-            tlw.save();
             System.exit(0);
         }
     }

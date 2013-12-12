@@ -19,94 +19,29 @@ public class TeamListWindow extends JFrame implements ActionListener{
         return fileArray;
     }
 
-    public void save(String key, String value) 
-    {
-        /*
-        String path = System.getProperty("user.dir") + "/teams/" + filePath + ".xml";
-        try {
-            File file = new File(path);
-            boolean exist = file.exists();
-            if(!exist) {
-                file.createNewFile();
-            }
-            OutputStream write = new FileOutputStream(path);
-            properties.setProperty(key, value);
-            properties.storeToXML(write, filePath);
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Failed to save the team's file.");
-        }
-        */
-    }
-    
-    public void save()
-    {
-        try
-        {
-            File temp = new File(System.getProperty("user.dir") + "/teams/teams.txt");
-            temp.delete();
-            temp.createNewFile();
-            BufferedWriter writer = new BufferedWriter(new FileWriter((System.getProperty("user.dir") + "/teams/teams.txt")));
-            for(TeamFile file: fileArray)
-            {
-                writer.write(file.getNumber());
-                writer.newLine();
-            }
-            System.out.println(fileArray.size());
-            writer.close();
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-            System.out.println("Failed to write to file: Save");
-        }
-    }
-    
-    /*
     public void load() 
     {
         try 
         {
-            //System.getProperty("user.dir") + "/teams/" + number + ".xml");
-            InputStream read = new FileInputStream(System.getProperty("user.dir") + "/teams/teams.xml");
-            properties.loadFromXML(read);
             for(int i = 0; i < 10000; i++)
             {
-                if(new File(System.getProperty("user.dir") + "/teams/" + i + ".xml")) {
-                    
+                File file = new File(System.getProperty("user.dir") + "/teams/" + i + ".xml");
+                if(file.exists()) 
+                {
+                    TeamFile temp = new TeamFile(String.valueOf(i));
+                    if(!fileArray.contains(temp))
+                    {
+                        fileArray.add(temp);
+                        System.out.println(file.toString());
+                    }
                 }
             }
-            String teamName = properties.getProperty(number);
-            setTeamDetails(teamName, teamNumber);
-            read.close();
-        } 
-        catch (FileNotFoundException e) 
+            System.out.println(fileArray.size());
+        }
+        catch (Exception e) 
         {
-            System.out.println("File not Found: Load");
-            save("Team Name", "New Team");
-            save("Team Number", filePath);
-            load(path);
-        } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Failure to read file: Load");
-        }
-    }
-    */
-
-    public void load()
-    {
-        try
-        {
-            Scanner reader = new Scanner(new File(System.getProperty("user.dir") + "/teams/teams.txt"));
-            while(reader.hasNext())
-            {
-                addTeam(reader.nextLine());
-            }
-            reader.close();
-        }
-        catch(Exception e)
-        {
-            System.out.println("Third: Failed to read file: Load");
         }
     }
 
@@ -158,7 +93,7 @@ public class TeamListWindow extends JFrame implements ActionListener{
             y++;
         }
     }
-    
+
     private void addTestEntry() {
         c.gridy = 0;
         c.gridx = 0;
@@ -216,5 +151,5 @@ public class TeamListWindow extends JFrame implements ActionListener{
         }
 
     }
-    
+
 }
