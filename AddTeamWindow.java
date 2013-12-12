@@ -29,12 +29,28 @@ public class AddTeamWindow extends JFrame implements ActionListener {
         buttonPanel.add(save);
         buttonPanel.add(cancel);
         
+        JPanel namePanel = new JPanel(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        
         JPanel textAreaPanel = new JPanel(new FlowLayout());
         nameText = new JTextField("Team Name");
         nameText.setSize(nameText.getPreferredSize());
         numberText = new JTextField("Team Number");
-        textAreaPanel.add(nameText);
-        textAreaPanel.add(numberText);
+        
+        c.gridx = 0;
+        c.gridy = 0;
+        namePanel.add(new JLabel("Team Name"), c);
+        c.gridy = 1;
+        namePanel.add(nameText, c);
+        
+        c.gridx = 1;
+        c.gridy = 0;
+        namePanel.add(new JLabel("Team Number"), c);
+        c.gridy = 1;
+        namePanel.add(numberText, c);
+        
+        textAreaPanel.add(namePanel);
+        //textAreaPanel.add(numberPanel);
         
         window.add(buttonPanel, BorderLayout.SOUTH);
         window.add(textAreaPanel, BorderLayout.CENTER);

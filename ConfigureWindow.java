@@ -17,15 +17,6 @@ public class ConfigureWindow extends JFrame implements ActionListener {
         window.setLocationRelativeTo(null);
         window.setVisible(true);
 
-        /*
-        irArray[0] = "Yes";
-        irArray[1] = "No";
-        //irAuto = new JComboBox(irArray);
-        //irAuto.setSelectedIndex(2);
-        //irAuto.addActionListener(this);
-        //JPanel buttonPanel = new JPanel(new FlowLayout());
-        //buttonPanel.add(irAuto);
-        */
         JPanel buttonPanel = new JPanel(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         
@@ -99,12 +90,17 @@ public class ConfigureWindow extends JFrame implements ActionListener {
         titlePanel.add(new JLabel("Configure"));
 
         window.add(titlePanel, BorderLayout.NORTH);
-        //window.add(buttonPanel, BorderLayout.CENTER);
         window.add(buttonPanel, BorderLayout.LINE_START);
         window.add(savePanel, BorderLayout.SOUTH);
 
         window.pack();
         window.show();
+    }
+    
+    String[] getChoices() {
+        String[] returnArray = new String[6];
+        //returnArray[0] = irAuto.getChoice();
+        return returnArray;
     }
 
     public void actionPerformed(ActionEvent e) {

@@ -21,6 +21,7 @@ public class TeamListWindow extends JFrame implements ActionListener{
 
     public void save(String key, String value) 
     {
+        /*
         String path = System.getProperty("user.dir") + "/teams/" + filePath + ".xml";
         try {
             File file = new File(path);
@@ -35,6 +36,7 @@ public class TeamListWindow extends JFrame implements ActionListener{
             e.printStackTrace();
             System.out.println("Failed to save the team's file.");
         }
+        */
     }
     
     public void save()
@@ -60,11 +62,12 @@ public class TeamListWindow extends JFrame implements ActionListener{
         }
     }
     
+    /*
     public void load() 
     {
         try 
         {
-            System.getProperty("user.dir") + "/teams/" + number + ".xml");
+            //System.getProperty("user.dir") + "/teams/" + number + ".xml");
             InputStream read = new FileInputStream(System.getProperty("user.dir") + "/teams/teams.xml");
             properties.loadFromXML(read);
             for(int i = 0; i < 10000; i++)
@@ -88,6 +91,7 @@ public class TeamListWindow extends JFrame implements ActionListener{
             System.out.println("Failure to read file: Load");
         }
     }
+    */
 
     public void load()
     {
@@ -212,4 +216,5 @@ public class TeamListWindow extends JFrame implements ActionListener{
         }
 
     }
+    
 }
