@@ -67,7 +67,7 @@ public class AddTeamWindow extends JFrame implements ActionListener {
     
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == save) {
-            GUI.tlw.addTeam(numberText.getText());
+            GUI.tlw.addTeam(numberText.getText(), nameText.getText());
             GUI.mainframe.setVisible(true);
             window.dispose();
         }
