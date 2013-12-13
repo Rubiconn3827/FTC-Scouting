@@ -1,9 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.*;
 
 public class ViewTeamWindow extends JFrame implements ActionListener {
 
+    private ArrayList<TeamFile> temp;
+    private TeamFile file;
     protected JFrame window;
     protected JButton edit2, back;
     protected JLabel wins, losses, penalties, irauto, ramp, fspin, hang, pscore, fscore;
@@ -12,8 +15,17 @@ public class ViewTeamWindow extends JFrame implements ActionListener {
     String teamNameS = " Empty ";
     String teamNumberS = " Empty ";
 
-    public ViewTeamWindow() {
-
+    public ViewTeamWindow(String number) {
+        temp = GUI.tlw.getList();
+        for(TeamFile hold: temp)
+        {
+            if(hold.getNumber().equals(number))
+                file = hold;
+        }
+        
+        teamNameS = file.getName();
+        teamNumberS = file.getNumber();
+        
         window = new JFrame("Team");
         window.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         window.getContentPane().setLayout(new BorderLayout());
@@ -37,6 +49,7 @@ public class ViewTeamWindow extends JFrame implements ActionListener {
         c.gridy = 0;
         infoPanel.add(winsf, c);
         winsf.setEditable(false);
+        winsf.setText(file.getWins());
 
         c.gridx = 0;
         c.gridy = 2;
@@ -47,6 +60,7 @@ public class ViewTeamWindow extends JFrame implements ActionListener {
         c.gridy = 2;
         infoPanel.add(lossesf, c);
         lossesf.setEditable(false);
+        lossesf.setText(file.getLosses());
 
         c.gridx = 0;
         c.gridy = 4;
@@ -57,6 +71,7 @@ public class ViewTeamWindow extends JFrame implements ActionListener {
         c.gridy = 4;
         infoPanel.add(penaltiesf, c);
         penaltiesf.setEditable(false);
+        penaltiesf.setText(file.getPenalties());
 
         c.gridx = 2;
         c.gridy = 0;
@@ -67,6 +82,7 @@ public class ViewTeamWindow extends JFrame implements ActionListener {
         c.gridy = 0;
         infoPanel.add(irautof, c);
         irautof.setEditable(false);
+        irautof.setText(file.getIRAutonomous());
 
         c.gridx = 2;
         c.gridy = 2;
@@ -77,6 +93,7 @@ public class ViewTeamWindow extends JFrame implements ActionListener {
         c.gridy = 2;
         infoPanel.add(rampf, c);
         rampf.setEditable(false);
+        rampf.setText(file.getRamp());
 
         c.gridx = 2;
         c.gridy = 4;
@@ -87,6 +104,7 @@ public class ViewTeamWindow extends JFrame implements ActionListener {
         c.gridy = 4;
         infoPanel.add(fspinf, c);
         fspinf.setEditable(false);
+        fspinf.setText(file.getFlagSpin());
 
         c.gridx = 4;
         c.gridy = 0;
@@ -97,6 +115,7 @@ public class ViewTeamWindow extends JFrame implements ActionListener {
         c.gridy = 0;
         infoPanel.add(hangf, c);
         hangf.setEditable(false);
+        hangf.setText(file.getHang());
 
         c.gridx = 4;
         c.gridy = 2;
@@ -107,6 +126,7 @@ public class ViewTeamWindow extends JFrame implements ActionListener {
         c.gridy = 2;
         infoPanel.add(pscoref, c);
         pscoref.setEditable(false);
+        pscoref.setText(file.getPendulumScore());
 
         c.gridx = 4;
         c.gridy = 4;
@@ -117,6 +137,7 @@ public class ViewTeamWindow extends JFrame implements ActionListener {
         c.gridy = 4;
         infoPanel.add(fscoref, c);
         fscoref.setEditable(false);
+        fscoref.setText(file.getFloorGoalScore());
 
         JPanel buttonPanel = new JPanel(new FlowLayout());
         edit2 = new JButton("Edit");

@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=
-comment0.target=ViewTeamWindow()
+comment0.params=number
+comment0.target=ViewTeamWindow(java.lang.String)
 comment1.params=
 comment1.target=void\ switchEdit()
 comment2.params=

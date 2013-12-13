@@ -91,7 +91,7 @@ public class GUI implements ActionListener {
 
         tlw = new TeamListWindow();
         tlw.setVisible(false);
-        
+
         MouseyMousey m = new MouseyMousey(mainframe);
         mainframe.addMouseListener(m);
         mainframe.addMouseMotionListener(m);
@@ -101,8 +101,9 @@ public class GUI implements ActionListener {
         mainframe.setVisible(true);
     }
 
-    public void search(String input) {
-
+    public void search(String number) 
+    {
+        ViewTeamWindow vtw = new ViewTeamWindow(number);
     }
 
     public void windowClosing(WindowEvent e) {
@@ -120,7 +121,6 @@ public class GUI implements ActionListener {
         else if(e.getSource() == search) { 
             mainframe.setVisible(false);
             search(teamNumber.getText());
-            ViewTeamWindow vtw = new ViewTeamWindow();
         }
         else if(e.getSource() == viewTeams) {
             //tlw.load();
@@ -140,7 +140,6 @@ public class GUI implements ActionListener {
             mw = new MatchWindow();
         }
     }
-    
-    
+
 
 }

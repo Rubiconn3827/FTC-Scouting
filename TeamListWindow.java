@@ -124,8 +124,8 @@ public class TeamListWindow extends JFrame implements ActionListener{
 
     }
 
-    public void makeNTW() {
-        ViewTeamWindow tvw = new ViewTeamWindow();
+    public void makeNTW(String number) {
+        ViewTeamWindow tvw = new ViewTeamWindow(number);
         //setVisible(false);
     }
 
@@ -137,7 +137,7 @@ public class TeamListWindow extends JFrame implements ActionListener{
         public entry(TeamFile tf) {
             teamFile = tf;
             setLayout(new FlowLayout());
-            JLabel teamName = new JLabel(teamFile.getName());
+            JLabel teamName = new JLabel(teamFile.getName() + ": ");
             JLabel teamNumber = new JLabel(teamFile.getNumber());
             view = new JButton("View");
             delete = new JButton("Delete");
@@ -155,13 +155,14 @@ public class TeamListWindow extends JFrame implements ActionListener{
 
         public void actionPerformed(ActionEvent e) {
             if(e.getSource() == view) {
-                GUI.tlw.makeNTW();
+                //GUI.tlw.makeNTW(teamFile.getNumber());
+                System.out.println("Anything");
+                System.out.println(teamFile.getNumber());
+                new ViewTeamWindow(teamFile.getNumber());
             }
             else if(e.getSource() == delete) {
                 delete(teamFile);
             }
         }
-
     }
-
 }
