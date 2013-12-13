@@ -59,7 +59,7 @@ public class TeamListWindow extends JFrame implements ActionListener{
 
         listPanel = new JPanel(new GridBagLayout());
         scrollPane = new JScrollPane();
-        scrollPane.setPreferredSize(new Dimension(250,200));
+        scrollPane.setPreferredSize(new Dimension(300,200));
 
         back = new JButton("Back");
         JPanel buttonPanel = new JPanel(new FlowLayout());

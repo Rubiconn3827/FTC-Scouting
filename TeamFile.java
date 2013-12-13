@@ -7,12 +7,10 @@ public class TeamFile
     private String name;
     private String number;
 
-    public TeamFile(String path)
-    {
+    public TeamFile(String path) {
         filePath = path;
         number = path;
-        save("Team Number" , path);
-        save("Team Name", "New Team");
+        load(path);
     }
 
     Properties properties = new Properties();
@@ -34,23 +32,17 @@ public class TeamFile
         }
     }
 
-    public void load(String path) 
-    {
-
-        try 
-        {
+    public void load(String path) {
+        try {
             InputStream read = new FileInputStream(System.getProperty("user.dir") + "/teams/" + path + ".xml");
             properties.loadFromXML(read);
-            String teamName = properties.getProperty("Team Name");
-            String teamNumber = properties.getProperty("Team Number");
-            setTeamDetails(teamName, teamNumber);
+            name = properties.getProperty("Team Name");
+            number = properties.getProperty("Team Number");
             read.close();
         } 
-        catch (FileNotFoundException e) 
-        {
-            System.out.println("File not Found: Load");
-            save("Team Name", "New Team");
+        catch (FileNotFoundException e) {
             save("Team Number", filePath);
+            save("Team Name", "New Team");
             load(path);
         } catch (IOException e) {
             e.printStackTrace();
