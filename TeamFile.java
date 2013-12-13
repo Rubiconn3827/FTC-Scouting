@@ -16,8 +16,7 @@ public class TeamFile
     private String pendulumScore;
     private String floorGoalScore;
 
-    public TeamFile(String path)
-    {
+    public TeamFile(String path) {
         filePath = path;
         number = path;
         load(path);
@@ -42,14 +41,20 @@ public class TeamFile
         }
     }
 
+<<<<<<< HEAD
     public void load(String path) 
     {
         try 
         {
+=======
+    public void load(String path) {
+        try {
+>>>>>>> 0f273e27e30bdb6bc9ac6b0be3ae72a45a9df997
             InputStream read = new FileInputStream(System.getProperty("user.dir") + "/teams/" + path + ".xml");
             properties.loadFromXML(read);
             name = properties.getProperty("Team Name");
             number = properties.getProperty("Team Number");
+<<<<<<< HEAD
             wins = properties.getProperty("Wins");
             losses = properties.getProperty("Losses");
             penalties = properties.getProperty("Penalties");
@@ -74,6 +79,13 @@ public class TeamFile
             save("Hang", "0");
             save("Pendulum Score", "0");
             save("Floor Goal Score", "0");
+=======
+            read.close();
+        } 
+        catch (FileNotFoundException e) {
+            save("Team Number", filePath);
+            save("Team Name", "New Team");
+>>>>>>> 0f273e27e30bdb6bc9ac6b0be3ae72a45a9df997
             load(path);
         } catch (IOException e) {
             e.printStackTrace();
