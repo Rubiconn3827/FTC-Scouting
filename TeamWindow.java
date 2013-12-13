@@ -31,7 +31,7 @@ public class TeamWindow extends JFrame implements ActionListener {
 
     public TeamWindow() {
         setWindow();
-        this.show();
+        this.setVisible(true);
     }
     
     public void setWindow() {

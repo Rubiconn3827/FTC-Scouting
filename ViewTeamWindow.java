@@ -16,8 +16,8 @@ public class ViewTeamWindow extends JFrame implements ActionListener {
 
         window = new JFrame("Team");
         window.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        window.setLocationRelativeTo(null);
         window.getContentPane().setLayout(new BorderLayout());
+        window.setUndecorated(true);
 
         JPanel titlePanel = new JPanel(new FlowLayout());
         JLabel teamName = new JLabel(teamNameS);
@@ -125,12 +125,17 @@ public class ViewTeamWindow extends JFrame implements ActionListener {
         back.addActionListener(this);
         buttonPanel.add(edit2);
         buttonPanel.add(back);
+        
+        MouseyMousey m = new MouseyMousey(window);
+        window.addMouseListener(m);
+        window.addMouseMotionListener(m);
 
         window.add(buttonPanel, BorderLayout.SOUTH);
         window.add(infoPanel, BorderLayout.CENTER);
         window.add(titlePanel, BorderLayout.NORTH);
         window.pack();
-        window.show();
+        window.setLocationRelativeTo(null);
+        window.setVisible(true);
     }
 
     private void switchEdit() {
@@ -179,12 +184,14 @@ public class ViewTeamWindow extends JFrame implements ActionListener {
                         JOptionPane.YES_NO_OPTION);
                 if(response == JOptionPane.YES_OPTION) {
                     window.dispose();
+                    GUI.mainframe.setVisible(true);
                 }
                 else if(response == JOptionPane.NO_OPTION) {
 
                 }
             } else {
                 window.dispose();
+                GUI.mainframe.setVisible(true);
             }
         }
     }

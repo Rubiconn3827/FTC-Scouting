@@ -19,18 +19,13 @@ public class TeamListWindow extends JFrame implements ActionListener{
         return fileArray;
     }
 
-    public void load() 
-    {
-        try 
-        {
-            for(int i = 0; i < 10000; i++)
-            {
+    public void load() {
+        try {
+            for(int i = 0; i < 10000; i++){
                 File file = new File(System.getProperty("user.dir") + "/teams/" + i + ".xml");
-                if(file.exists()) 
-                {
+                if(file.exists()) {
                     TeamFile temp = new TeamFile(String.valueOf(i));
-                    if(!fileArray.contains(temp))
-                    {
+                    if(!fileArray.contains(temp)){
                         fileArray.add(temp);
                         System.out.println(file.toString());
                     }
@@ -56,13 +51,12 @@ public class TeamListWindow extends JFrame implements ActionListener{
     public TeamListWindow() {
         fileArray = new ArrayList<TeamFile>();
         load();
-        //addTeam("0");
         getContentPane().setLayout(new BorderLayout());
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setLocationRelativeTo(null);
-        //setUndecorated(true);
+        setUndecorated(true);
 
         listPanel = new JPanel(new GridBagLayout());
+        scrollPane = new JScrollPane();
 
         back = new JButton("Back");
         JPanel buttonPanel = new JPanel(new FlowLayout());
@@ -72,11 +66,17 @@ public class TeamListWindow extends JFrame implements ActionListener{
         c.gridx = 0;
         c.gridy = y;
         listPanel.add(new JLabel(fileArray.get(0).getNumber()));
+        scrollPane.getViewport().add(listPanel);
         add(buttonPanel, BorderLayout.SOUTH);
-        add(listPanel, BorderLayout.CENTER);
+        add(scrollPane, BorderLayout.CENTER);
+
+        MouseyMousey m = new MouseyMousey(this);
+        this.addMouseListener(m);
+        this.addMouseMotionListener(m);
 
         pack();
-        show();
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     private void addEntry(TeamFile tf) {
@@ -85,6 +85,7 @@ public class TeamListWindow extends JFrame implements ActionListener{
         c.gridy = y;
         c.gridx = 0;
         listPanel.add(e, c);
+        //listPanel.add(e);
     }
 
     private void makeEntries() {
@@ -97,24 +98,28 @@ public class TeamListWindow extends JFrame implements ActionListener{
     private void addTestEntry() {
         c.gridy = 0;
         c.gridx = 0;
-        listPanel.add(new JLabel("Test"), c);
+        //listPanel.add(new JLabel("Test"), c);
     }
 
     public void actionPerformed(ActionEvent e) {
 
         if(e.getSource() == back) {
             setVisible(false);
+            GUI.mainframe.setVisible(true);
         }
     }
 
     public void enableButtons() {
-        for(entry a : entries) {
-            a.enableButtons();
-        }
+
     }
 
     public void delete(TeamFile tf) {
 
+    }
+
+    public void makeNTW() {
+        ViewTeamWindow tvw = new ViewTeamWindow();
+        setVisible(false);
     }
 
     class entry extends JPanel implements ActionListener {
@@ -133,7 +138,7 @@ public class TeamListWindow extends JFrame implements ActionListener{
             add(teamNumber);
             add(view);
             add(delete);
-            show();
+            setVisible(true);
         }
 
         public void enableButtons() {
@@ -143,7 +148,7 @@ public class TeamListWindow extends JFrame implements ActionListener{
 
         public void actionPerformed(ActionEvent e) {
             if(e.getSource() == view) {
-                ViewTeamWindow tvw = new ViewTeamWindow();
+                GUI.tlw.makeNTW();
             }
             else if(e.getSource() == delete) {
                 delete(teamFile);

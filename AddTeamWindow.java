@@ -16,7 +16,7 @@ public class AddTeamWindow extends JFrame implements ActionListener {
         window = new JFrame("Add Team");
         window.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         window.getContentPane().setLayout(new BorderLayout());
-        window.setLocationRelativeTo(null);
+        window.setUndecorated(true);
         
         JPanel titlePanel = new JPanel(new FlowLayout());
         titlePanel.add(new JLabel("Add a team."));
@@ -56,18 +56,23 @@ public class AddTeamWindow extends JFrame implements ActionListener {
         window.add(textAreaPanel, BorderLayout.CENTER);
         window.add(titlePanel, BorderLayout.NORTH);
         
-        
+        MouseyMousey m = new MouseyMousey(window);
+        window.addMouseListener(m);
+        window.addMouseMotionListener(m);
 		
         window.pack();
-        window.show();
+        window.setLocationRelativeTo(null);
+        window.setVisible(true);
     }
     
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == save) {
             GUI.tlw.addTeam(numberText.getText());
+            GUI.mainframe.setVisible(true);
             window.dispose();
         }
         else if(e.getSource() == cancel) {
+            GUI.mainframe.setVisible(true);
             window.dispose();
         }
     }
