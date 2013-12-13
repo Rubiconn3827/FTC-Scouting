@@ -9,9 +9,11 @@ public class TeamListWindow extends JFrame implements ActionListener{
     ArrayList<TeamFile> fileArray;
     Properties properties = new Properties();
 
-    public void addTeam(String number)
+    public void addTeam(String number, String name)
     {
-        fileArray.add(new TeamFile(number));
+        TeamFile temp = new TeamFile(number);
+        temp.changeName(name);
+        fileArray.add(temp);
     }
 
     public ArrayList<TeamFile> getList()
@@ -124,7 +126,7 @@ public class TeamListWindow extends JFrame implements ActionListener{
 
     public void makeNTW() {
         ViewTeamWindow tvw = new ViewTeamWindow();
-        setVisible(false);
+        //setVisible(false);
     }
 
     class entry extends JPanel implements ActionListener {
