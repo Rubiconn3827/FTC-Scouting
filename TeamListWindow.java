@@ -57,6 +57,7 @@ public class TeamListWindow extends JFrame implements ActionListener{
 
         listPanel = new JPanel(new GridBagLayout());
         scrollPane = new JScrollPane();
+        scrollPane.setPreferredSize(new Dimension(250,200));
 
         back = new JButton("Back");
         JPanel buttonPanel = new JPanel(new FlowLayout());
@@ -65,7 +66,6 @@ public class TeamListWindow extends JFrame implements ActionListener{
         makeEntries();
         c.gridx = 0;
         c.gridy = y;
-        listPanel.add(new JLabel(fileArray.get(0).getNumber()));
         scrollPane.getViewport().add(listPanel);
         add(buttonPanel, BorderLayout.SOUTH);
         add(scrollPane, BorderLayout.CENTER);
@@ -77,6 +77,11 @@ public class TeamListWindow extends JFrame implements ActionListener{
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
+    }
+    
+    public int updateScrollSize() {
+        int a = entries.size();
+        return 0;
     }
 
     private void addEntry(TeamFile tf) {

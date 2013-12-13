@@ -13,6 +13,7 @@ public class NewMatchWindow extends JFrame implements ActionListener {
     Choice fScoreRed1, fScoreRed2, fScoreBlue1, fScoreBlue2;
     Choice spinRed1, spinRed2, spinBlue1, spinBlue2;
     Choice hangRed1, hangRed2, hangBlue1, hangBlue2;
+    Choice red1Dead, red2Dead, blue1Dead, blue2Dead;
 
     @SuppressWarnings("Unchecked")
 
@@ -116,6 +117,50 @@ public class NewMatchWindow extends JFrame implements ActionListener {
         c.gridx = 2;
         c.gridy = 4;
         newMatchPanel.add(redPenText, c);
+        
+        JLabel red1Fat = new JLabel("Red 1 Fatality");
+        c.gridx = 1;
+        c.gridy = 5;
+        newMatchPanel.add(red1Fat, c);
+        red1Dead = new Choice();
+        red1Dead.add("No");
+        red1Dead.add("Yes");
+        c.gridx = 2;
+        c.gridy = 5;
+        newMatchPanel.add(red1Dead, c);
+        
+        JLabel red2Fat = new JLabel("Red 2 Fatality");
+        c.gridx = 1;
+        c.gridy = 6;
+        newMatchPanel.add(red2Fat, c);
+        red2Dead = new Choice();
+        red2Dead.add("No");
+        red2Dead.add("Yes");
+        c.gridx = 2;
+        c.gridy = 6;
+        newMatchPanel.add(red2Dead, c);
+        
+        JLabel blue1Fat = new JLabel("Blue 1 Fatality");
+        c.gridx = 3;
+        c.gridy = 5;
+        newMatchPanel.add(blue1Fat, c);
+        blue1Dead = new Choice();
+        blue1Dead.add("No");
+        blue1Dead.add("Yes");
+        c.gridx = 4;
+        c.gridy = 5;
+        newMatchPanel.add(blue1Dead, c);
+        
+        JLabel blue2Fat = new JLabel("Blue 2 Fatality");
+        c.gridx = 3;
+        c.gridy = 6;
+        newMatchPanel.add(blue2Fat, c);
+        blue2Dead = new Choice();
+        blue2Dead.add("No");
+        blue2Dead.add("Yes");
+        c.gridx = 4;
+        c.gridy = 6;
+        newMatchPanel.add(blue2Dead, c);
 
         back = new JButton("Back");
         back.addActionListener(this);
@@ -125,8 +170,13 @@ public class NewMatchWindow extends JFrame implements ActionListener {
         buttonPanel.add(back);
         buttonPanel.add(save);
 
-        add(makeRedMatchInfoChoices(), BorderLayout.WEST);
-        add(makeBlueMatchInfoChoices(), BorderLayout.EAST);
+        JPanel redInfoChoices = makeRedMatchInfoChoices();
+        redInfoChoices.setBackground(Color.GRAY);
+        JPanel blueInfoChoices = makeBlueMatchInfoChoices();
+        blueInfoChoices.setBackground(Color.GRAY);
+        
+        add(redInfoChoices, BorderLayout.WEST);
+        add(blueInfoChoices, BorderLayout.EAST);
         add(newMatchPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
 
