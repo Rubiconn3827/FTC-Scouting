@@ -137,8 +137,8 @@ public class TeamListWindow extends JFrame implements ActionListener{
         public entry(TeamFile tf) {
             teamFile = tf;
             setLayout(new FlowLayout());
-            JLabel teamName = new JLabel(tf.getName());
-            JLabel teamNumber = new JLabel(tf.getNumber());
+            JLabel teamName = new JLabel(teamFile.getName());
+            JLabel teamNumber = new JLabel(teamFile.getNumber());
             view = new JButton("View");
             delete = new JButton("Delete");
             add(teamName);
