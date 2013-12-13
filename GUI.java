@@ -124,8 +124,7 @@ public class GUI implements ActionListener {
         }
         else if(e.getSource() == viewTeams) {
             //tlw.load();
-            tlw.setVisible(true);
-            tlw.repaint();
+            tlw = new TeamListWindow();
             mainframe.setVisible(false);
         }
         else if(e.getSource() == configure) {
