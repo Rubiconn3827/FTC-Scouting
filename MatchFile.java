@@ -10,8 +10,6 @@ public class MatchFile {
     private String bluePoints;
     private String redPenalties;
     private String bluePenalties;
-    private String redTotal;
-    private String blueTotal;
     private String redAllianceOne;
     private String redAllianceTwo;
     private String blueAllianceOne;
@@ -55,8 +53,6 @@ public class MatchFile {
             bluePoints = properties.getProperty("Blue Points");
             redPenalties = properties.getProperty("Red Penalties");
             bluePenalties = properties.getProperty("Blue Penalties");
-            redTotal = properties.getProperty("Red Total");
-            blueTotal = properties.getProperty("Blue Total");
             redAllianceOne = properties.getProperty("Red Alliance One");
             blueAllianceOne = properties.getProperty("Blue Alliance One");
             redAllianceTwo = properties.getProperty("Red Alliance Two");
@@ -121,16 +117,6 @@ public class MatchFile {
         return bluePenalties;
     }
 
-    public String getRedTotal()
-    {
-        return redTotal;
-    }
-
-    public String getBlueTotal()
-    {
-        return blueTotal;
-    }
-
     public String getRedAllianceOne()
     {
         return redAllianceOne;
@@ -157,67 +143,55 @@ public class MatchFile {
         save("Date", date);
     }
 
-    public void changeMatchNumber(String number)
+    public void setMatchNumber(String number)
     {
         matchNumber = number;
         save("Match Number", matchNumber);
     }
 
-    public void changeRedPoints(String temp)
+    public void setRedPoints(String temp)
     {
         redPoints = temp;
         save("Red Points", redPoints);
     }
 
-    public void changeBluePoints(String temp)
+    public void setBluePoints(String temp)
     {
         bluePoints = temp;
         save("Blue Points", bluePoints);
     }
 
-    public void changeRedPenalites(String temp)
+    public void setRedPenalties(String temp)
     {
         redPenalties = temp;
         save("Red Penalties", redPenalties);
     }
 
-    public void changeBluePenalties(String temp)
+    public void setBluePenalties(String temp)
     {
         bluePenalties = temp;
         save("Blue Penalties", bluePenalties);
     }
 
-    public void changeRedTotal(String temp)
-    {
-        redTotal = temp;
-        save("Red Total", redTotal);
-    }
-
-    public void changeBlueTotal(String temp)
-    {
-        blueTotal = temp;
-        save("Blue Total", blueTotal);
-    }
-
-    public void changeRedAllianceOne(String temp)
+    public void setRedAllianceOne(String temp)
     {
         redAllianceOne = temp;
         save("Red Alliance One", redAllianceOne);
     }
 
-    public void changeBlueAllianceOne(String temp)
+    public void setBlueAllianceOne(String temp)
     {
         blueAllianceOne = temp;
         save("Blue Alliance One", blueAllianceOne);
     }
 
-    public void changeRedAllianceTwo(String temp)
+    public void setRedAllianceTwo(String temp)
     {
         redAllianceTwo = temp;
         save("Red Alliance Two", redAllianceTwo);
     }
 
-    public void changeBlueAllianceTwo(String temp)
+    public void setBlueAllianceTwo(String temp)
     {
         blueAllianceTwo = temp;
         save("Blue Alliance Two", blueAllianceTwo);

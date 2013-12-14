@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>CMSA: </comment>
+<entry key="Red Alliance One"/>
+<entry key="Blue Alliance One"/>
+<entry key="Match Number"/>
+<entry key="Red Penalties"/>
+<entry key="Blue Penalties"/>
+<entry key="Red Alliance Two"/>
+<entry key="Date">Dec 13, 2013 4:25:38 PM</entry>
+<entry key="Red Points"/>
+<entry key="Blue Alliance Two"/>
+<entry key="Red Total">0</entry>
+<entry key="Blue Points"/>
+<entry key="Blue Total">0</entry>
+<entry key="Regional">CMSA</entry>
+</properties>

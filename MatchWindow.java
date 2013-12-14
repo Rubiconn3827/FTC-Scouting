@@ -5,6 +5,7 @@ import javax.swing.*;
 
 public class MatchWindow extends JFrame implements ActionListener {
 
+    public static MatchHistoryWindow mhw = new MatchHistoryWindow();
     JButton back, history, add;
 
     public MatchWindow() {
@@ -40,8 +41,9 @@ public class MatchWindow extends JFrame implements ActionListener {
             dispose();
             GUI.mainframe.setVisible(true);
         }
-        else if(e.getSource() == history) {
-            
+        else if(e.getSource() == history) 
+        {
+            mhw = new MatchHistoryWindow();
         }
         else if(e.getSource() == add) {
             setVisible(false);

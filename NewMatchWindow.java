@@ -5,6 +5,12 @@ import java.awt.event.*;
 
 public class NewMatchWindow extends JFrame implements ActionListener {
 
+    MatchFile file;
+    ArrayList<TeamFile> list;
+    TeamFile redOne, redTwo, blueOne, blueTwo;
+    JTextField matchNumText, red1Text, red2Text, blue1Text, blue2Text,
+    blueScoreText, redScoreText, bluePenText, redPenText;
+
     JButton back, save;
     JPanel redmatchInfoPanel, bluematchInfoPanel;
     Choice infoRedIR1, infoRedIR2, infoBlueIR1, infoBlueIR2;
@@ -18,6 +24,7 @@ public class NewMatchWindow extends JFrame implements ActionListener {
     @SuppressWarnings("Unchecked")
 
     public NewMatchWindow() {
+        list = GUI.tlw.getList();
         setTitle("New Match");
         getContentPane().setLayout(new BorderLayout());
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -33,16 +40,17 @@ public class NewMatchWindow extends JFrame implements ActionListener {
         c.gridx = 2;
         c.gridy = 0;
         newMatchPanel.add(matchNumLabel, c);
-        JTextField matchNumText = new JTextField();
+        matchNumText = new JTextField();
         matchNumText.setPreferredSize(new Dimension(50, 20));
         c.gridx = 3;
         c.gridy = 0;
         newMatchPanel.add(matchNumText, c);
+
         JLabel red1Label = new JLabel("Red 1");
         c.gridx = 1;
         c.gridy = 1;
         newMatchPanel.add(red1Label, c);
-        JTextField red1Text = new JTextField();
+        red1Text = new JTextField();
         red1Text.setPreferredSize(new Dimension(50,20));
         c.gridx = 2;
         c.gridy = 1;
@@ -52,7 +60,7 @@ public class NewMatchWindow extends JFrame implements ActionListener {
         c.gridx = 1;
         c.gridy = 2;
         newMatchPanel.add(red2Label, c);
-        JTextField red2Text = new JTextField();
+        red2Text = new JTextField();
         red2Text.setPreferredSize(new Dimension(50,20));
         c.gridx = 2;
         c.gridy = 2;
@@ -62,7 +70,7 @@ public class NewMatchWindow extends JFrame implements ActionListener {
         c.gridx = 3;
         c.gridy = 1;
         newMatchPanel.add(blue1Label, c);
-        JTextField blue1Text = new JTextField();
+        blue1Text = new JTextField();
         blue1Text.setPreferredSize(new Dimension(50,20));
         c.gridx = 4;
         c.gridy = 1;
@@ -72,7 +80,7 @@ public class NewMatchWindow extends JFrame implements ActionListener {
         c.gridx = 3;
         c.gridy = 2;
         newMatchPanel.add(blue2Label, c);
-        JTextField blue2Text = new JTextField();
+        blue2Text = new JTextField();
         blue2Text.setPreferredSize(new Dimension(50,20));
         c.gridx = 4;
         c.gridy = 2;
@@ -82,7 +90,7 @@ public class NewMatchWindow extends JFrame implements ActionListener {
         c.gridx = 3;
         c.gridy = 3;
         newMatchPanel.add(blueScoreLabel, c);
-        JTextField blueScoreText = new JTextField();
+        blueScoreText = new JTextField();
         blueScoreText.setPreferredSize(new Dimension(50, 20));
         c.gridx = 4;
         c.gridy = 3;
@@ -92,7 +100,7 @@ public class NewMatchWindow extends JFrame implements ActionListener {
         c.gridx = 1;
         c.gridy = 3;
         newMatchPanel.add(redScoreLabel, c);
-        JTextField redScoreText = new JTextField();
+        redScoreText = new JTextField();
         redScoreText.setPreferredSize(new Dimension(50, 20));
         c.gridx = 2;
         c.gridy = 3;
@@ -102,7 +110,7 @@ public class NewMatchWindow extends JFrame implements ActionListener {
         c.gridx = 3;
         c.gridy = 4;
         newMatchPanel.add(bluePenLabel, c);
-        JTextField bluePenText = new JTextField();
+        bluePenText = new JTextField();
         bluePenText.setPreferredSize(new Dimension(50, 20));
         c.gridx = 4;
         c.gridy = 4;
@@ -112,12 +120,12 @@ public class NewMatchWindow extends JFrame implements ActionListener {
         c.gridx = 1;
         c.gridy = 4;
         newMatchPanel.add(redPenLabel, c);
-        JTextField redPenText = new JTextField();
+        redPenText = new JTextField();
         redPenText.setPreferredSize(new Dimension(50, 20));
         c.gridx = 2;
         c.gridy = 4;
         newMatchPanel.add(redPenText, c);
-        
+
         JLabel red1Fat = new JLabel("Red 1 Fatality");
         c.gridx = 1;
         c.gridy = 5;
@@ -128,7 +136,7 @@ public class NewMatchWindow extends JFrame implements ActionListener {
         c.gridx = 2;
         c.gridy = 5;
         newMatchPanel.add(red1Dead, c);
-        
+
         JLabel red2Fat = new JLabel("Red 2 Fatality");
         c.gridx = 1;
         c.gridy = 6;
@@ -139,7 +147,7 @@ public class NewMatchWindow extends JFrame implements ActionListener {
         c.gridx = 2;
         c.gridy = 6;
         newMatchPanel.add(red2Dead, c);
-        
+
         JLabel blue1Fat = new JLabel("Blue 1 Fatality");
         c.gridx = 3;
         c.gridy = 5;
@@ -150,7 +158,7 @@ public class NewMatchWindow extends JFrame implements ActionListener {
         c.gridx = 4;
         c.gridy = 5;
         newMatchPanel.add(blue1Dead, c);
-        
+
         JLabel blue2Fat = new JLabel("Blue 2 Fatality");
         c.gridx = 3;
         c.gridy = 6;
@@ -174,7 +182,7 @@ public class NewMatchWindow extends JFrame implements ActionListener {
         redInfoChoices.setBackground(Color.GRAY);
         JPanel blueInfoChoices = makeBlueMatchInfoChoices();
         blueInfoChoices.setBackground(Color.GRAY);
-        
+
         add(redInfoChoices, BorderLayout.WEST);
         add(blueInfoChoices, BorderLayout.EAST);
         add(newMatchPanel, BorderLayout.CENTER);
@@ -257,7 +265,7 @@ public class NewMatchWindow extends JFrame implements ActionListener {
         pScoreRed2 = new Choice();
         pScoreRed2.add("No");
         pScoreRed2.add("Yes");
-        JLabel pLabelRed2 = new JLabel(" Red 1 Pendulum Score ");
+        JLabel pLabelRed2 = new JLabel(" Red 2 Pendulum Score ");
         pLabelRed2.setForeground(Color.RED);
         //Set coords
         c.gridx = 1;
@@ -413,7 +421,7 @@ public class NewMatchWindow extends JFrame implements ActionListener {
         pScoreBlue2 = new Choice();
         pScoreBlue2.add("No");
         pScoreBlue2.add("Yes");
-        JLabel pLabelBlue2 = new JLabel(" Blue 1 Pendulum Score ");
+        JLabel pLabelBlue2 = new JLabel(" Blue 2 Pendulum Score ");
         pLabelBlue2.setForeground(Color.BLUE);
         //Set coords
         c.gridx = 1;
@@ -504,8 +512,299 @@ public class NewMatchWindow extends JFrame implements ActionListener {
         return co.getSelectedItem();
     }
 
+    public void saveMatchInfo()
+    {
+        file = new MatchFile("CMSA", matchNumText.getText());
+        file.setRedPoints(redScoreText.getText());
+        file.setBluePoints(blueScoreText.getText());
+        file.setRedPenalties(redPenText.getText());
+        file.setBluePenalties(bluePenText.getText());
+        file.setRedAllianceOne(red1Text.getText());
+        file.setBlueAllianceOne(blue1Text.getText());
+        file.setRedAllianceTwo(red2Text.getText());
+        file.setBlueAllianceTwo(blue2Text.getText());
+        GUI.mw.mhw.addMatch("CMSA", matchNumText.getText());
+    }
+
+    public void fatalities()
+    {
+        for(TeamFile file: list)
+        {
+            if(file.getNumber().equals(blue1Text.getText()))
+                blueOne = file;
+            else if(file.getNumber().equals(blue2Text.getText()))
+                blueTwo = file;
+            else if(file.getNumber().equals(red1Text.getText()))
+                redOne = file;
+            else if(file.getNumber().equals(red2Text.getText()))
+                redTwo = file;
+        }
+
+        if(red1Dead.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(redOne.getFatalities());
+            temp++;
+            redOne.setFatalities(String.valueOf(temp));
+        }
+        if(red2Dead.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(redTwo.getFatalities());
+            temp++;
+            redTwo.setFatalities(String.valueOf(temp));
+        }
+        if(blue1Dead.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(blueOne.getFatalities());
+            temp++;
+            blueOne.setFatalities(String.valueOf(temp));
+        }
+        if(blue2Dead.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(blueTwo.getFatalities());
+            temp++;
+            blueTwo.setFatalities(String.valueOf(temp));
+        }
+    }
+    
+    public void update()
+    {
+        int red = Integer.parseInt(redScoreText.getText());
+        int blue = Integer.parseInt(blueScoreText.getText());
+        int redOneScore = Integer.parseInt(redOne.getScore()) + red;
+        int redTwoScore = Integer.parseInt(blueOne.getScore()) + red;
+        int blueOneScore = Integer.parseInt(redTwo.getScore()) + blue;
+        int blueTwoScore = Integer.parseInt(blueTwo.getScore()) + blue;
+        redOne.setScore(String.valueOf(redOneScore));
+        redTwo.setScore(String.valueOf(redTwoScore));
+        blueOne.setScore(String.valueOf(blueOneScore));
+        blueTwo.setScore(String.valueOf(blueTwoScore));
+        if(red > blue)
+        {
+            int temp = Integer.parseInt(redOne.getWins());
+            temp++;
+            redOne.setWins(String.valueOf(temp));
+            
+            temp = Integer.parseInt(redTwo.getWins());
+            temp++;
+            redTwo.setWins(String.valueOf(temp));
+            
+            temp = Integer.parseInt(blueOne.getLosses());
+            temp++;
+            blueOne.setLosses(String.valueOf(temp));
+            
+            temp = Integer.parseInt(blueTwo.getLosses());
+            temp++;
+            blueTwo.setLosses(String.valueOf(temp));
+        }
+        else if(blue > red)
+        {
+            int temp = Integer.parseInt(redOne.getLosses());
+            temp++;
+            redOne.setLosses(String.valueOf(temp));
+            
+            temp = Integer.parseInt(redTwo.getLosses());
+            temp++;
+            redTwo.setLosses(String.valueOf(temp));
+            
+            temp = Integer.parseInt(blueOne.getWins());
+            temp++;
+            blueOne.setWins(String.valueOf(temp));
+            
+            temp = Integer.parseInt(blueTwo.getWins());
+            temp++;
+            blueTwo.setWins(String.valueOf(temp));
+        }
+        else
+        {
+            int temp = Integer.parseInt(redOne.getTies());
+            temp++;
+            redOne.setTies(String.valueOf(temp));
+            
+            temp = Integer.parseInt(redTwo.getTies());
+            temp++;
+            redTwo.setTies(String.valueOf(temp));
+            
+            temp = Integer.parseInt(blueOne.getTies());
+            temp++;
+            blueOne.setTies(String.valueOf(temp));
+            
+            temp = Integer.parseInt(blueTwo.getTies());
+            temp++;
+            blueTwo.setTies(String.valueOf(temp));
+        }
+        
+        int red1Pen = Integer.parseInt(redOne.getPenalties()) + Integer.parseInt(redPenText.getText());
+        int red2Pen = Integer.parseInt(redTwo.getPenalties()) + Integer.parseInt(redPenText.getText());
+        int blue1Pen = Integer.parseInt(blueOne.getPenalties()) + Integer.parseInt(bluePenText.getText());
+        int blue2Pen = Integer.parseInt(blueTwo.getPenalties()) + Integer.parseInt(bluePenText.getText());
+        redOne.setPenalties(String.valueOf(red1Pen));
+        redTwo.setPenalties(String.valueOf(red2Pen));
+        blueOne.setPenalties(String.valueOf(blue1Pen));
+        blueTwo.setPenalties(String.valueOf(blue2Pen));
+        
+        //Red One Info
+        if(infoRedIR1.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(redOne.getIRAutonomous());
+            temp++;
+            redOne.setIRAutonomous(String.valueOf(temp));
+        }
+        if(infoRedRamp1.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(redOne.getRamp());
+            temp++;
+            redOne.setRamp(String.valueOf(temp));
+        }
+        if(pScoreRed1.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(redOne.getPendulumScore());
+            temp++;
+            redOne.setPendulumScore(String.valueOf(temp));
+        }
+        if(fScoreRed1.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(redOne.getFloorGoalScore());
+            temp++;
+            redOne.setFloorGoalScore(String.valueOf(temp));
+        }
+        if(spinRed1.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(redOne.getFlagSpin());
+            temp++;
+            redOne.setFlagSpin(String.valueOf(temp));
+        }
+        if(hangRed1.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(redOne.getHang());
+            temp++;
+            redOne.setHang(String.valueOf(temp));
+        }
+        
+        //Red Two Info
+        if(infoRedIR2.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(redTwo.getIRAutonomous());
+            temp++;
+            redTwo.setIRAutonomous(String.valueOf(temp));
+        }
+        if(infoRedRamp2.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(redTwo.getRamp());
+            temp++;
+            redTwo.setRamp(String.valueOf(temp));
+        }
+        if(pScoreRed2.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(redTwo.getPendulumScore());
+            temp++;
+            redTwo.setPendulumScore(String.valueOf(temp));
+        }
+        if(fScoreRed2.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(redTwo.getFloorGoalScore());
+            temp++;
+            redTwo.setFloorGoalScore(String.valueOf(temp));
+        }
+        if(spinRed2.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(redTwo.getFlagSpin());
+            temp++;
+            redTwo.setFlagSpin(String.valueOf(temp));
+        }
+        if(hangRed2.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(redTwo.getHang());
+            temp++;
+            redTwo.setHang(String.valueOf(temp));
+        }
+        
+        //Blue One Info
+        if(infoBlueIR1.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(blueOne.getIRAutonomous());
+            temp++;
+            blueOne.setIRAutonomous(String.valueOf(temp));
+        }
+        if(infoBlueRamp1.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(blueOne.getRamp());
+            temp++;
+            blueOne.setRamp(String.valueOf(temp));
+        }
+        if(pScoreBlue1.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(blueOne.getPendulumScore());
+            temp++;
+            blueOne.setPendulumScore(String.valueOf(temp));
+        }
+        if(fScoreBlue1.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(blueOne.getFloorGoalScore());
+            temp++;
+            blueOne.setFloorGoalScore(String.valueOf(temp));
+        }
+        if(spinBlue1.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(blueOne.getFlagSpin());
+            temp++;
+            blueOne.setFlagSpin(String.valueOf(temp));
+        }
+        if(hangBlue1.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(blueOne.getHang());
+            temp++;
+            blueOne.setHang(String.valueOf(temp));
+        }
+        
+        //Blue Two Info
+        if(infoBlueIR2.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(blueTwo.getIRAutonomous());
+            temp++;
+            blueTwo.setIRAutonomous(String.valueOf(temp));
+        }
+        if(infoBlueRamp2.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(blueTwo.getRamp());
+            temp++;
+            blueTwo.setRamp(String.valueOf(temp));
+        }
+        if(pScoreBlue2.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(blueTwo.getPendulumScore());
+            temp++;
+            blueTwo.setPendulumScore(String.valueOf(temp));
+        }
+        if(fScoreBlue2.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(blueTwo.getFloorGoalScore());
+            temp++;
+            blueTwo.setFloorGoalScore(String.valueOf(temp));
+        }
+        if(spinBlue2.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(blueTwo.getFlagSpin());
+            temp++;
+            blueTwo.setFlagSpin(String.valueOf(temp));
+        }
+        if(hangBlue2.getSelectedIndex() == 1)
+        {
+            int temp = Integer.parseInt(blueTwo.getHang());
+            temp++;
+            blueTwo.setHang(String.valueOf(temp));
+        }
+    }
+
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == back) {
+            dispose();
+            GUI.mw.setVisible(true);
+        }
+        else if(e.getSource() == save)
+        {
+            saveMatchInfo();
+            fatalities();
+            update();
             dispose();
             GUI.mw.setVisible(true);
         }
