@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-<comment>2</comment>
+<comment>5200</comment>
 <entry key="Floor Goal Score">0</entry>
 <entry key="IR Autonomous">0</entry>
 <entry key="Pendulum Score">0</entry>
 <entry key="Hang">0</entry>
 <entry key="Losses">0</entry>
-<entry key="Team Number">2</entry>
+<entry key="Team Number">5200</entry>
 <entry key="Flag Spin">0</entry>
-<entry key="Team Name">Super Duper Long Team Name Extra Large</entry>
+<entry key="Team Name">Robots Inc</entry>
 <entry key="Wins">0</entry>
 <entry key="Ramp">0</entry>
 <entry key="Penalties">0</entry>
