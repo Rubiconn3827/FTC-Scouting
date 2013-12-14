@@ -159,6 +159,18 @@ public class ViewTeamWindow extends JFrame implements ActionListener {
         window.setVisible(true);
     }
 
+    private void saveInfo()
+    {
+        file.setWins(winsf.getText());
+        file.setLosses(lossesf.getText());
+        file.setPenalties(penaltiesf.getText());
+        file.setIRAutonomous(irautof.getText());
+        file.setRamp(rampf.getText());
+        file.setFlagSpin(fspinf.getText());
+        file.setHang(hangf.getText());
+        file.setFloorGoalScore(fscoref.getText());
+    }
+    
     private void switchEdit() {
         isEditing = !isEditing;
         if(isEditing) {
@@ -166,6 +178,7 @@ public class ViewTeamWindow extends JFrame implements ActionListener {
             makeEditable();
         } else {
             edit2.setText("Edit");
+            saveInfo();
             makeUneditable();
         }
     }
