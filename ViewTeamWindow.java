@@ -15,15 +15,15 @@ public class ViewTeamWindow extends JFrame implements ActionListener {
     String teamNameS = " Empty ";
     String teamNumberS = " Empty ";
 
-    public ViewTeamWindow(String number) {
+    public ViewTeamWindow(String input) {
         temp = GUI.tlw.getList();
         for(TeamFile hold: temp)
         {
-            if(hold.getNumber().equals(number))
+            if(hold.getNumber().equals(input) || hold.getName().equalsIgnoreCase(input))
                 file = hold;
         }
         
-        teamNameS = file.getName();
+        teamNameS = file.getName() + ": ";
         teamNumberS = file.getNumber();
         
         window = new JFrame("Team");

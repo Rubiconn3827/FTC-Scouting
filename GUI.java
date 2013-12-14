@@ -101,9 +101,9 @@ public class GUI implements ActionListener {
         mainframe.setVisible(true);
     }
 
-    public void search(String number) 
+    public void search(String input) 
     {
-        ViewTeamWindow vtw = new ViewTeamWindow(number);
+        ViewTeamWindow vtw = new ViewTeamWindow(input);
     }
 
     public void windowClosing(WindowEvent e) {

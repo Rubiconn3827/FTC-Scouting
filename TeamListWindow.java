@@ -12,7 +12,7 @@ public class TeamListWindow extends JFrame implements ActionListener{
     public void addTeam(String number, String name)
     {
         TeamFile temp = new TeamFile(number);
-        temp.changeName(name);
+        temp.setName(name);
         fileArray.add(temp);
     }
 
@@ -120,8 +120,9 @@ public class TeamListWindow extends JFrame implements ActionListener{
 
     }
 
-    public void delete(TeamFile tf) {
-
+    public void delete(TeamFile tf) 
+    {
+        
     }
 
     public void makeNTW(String number) {

@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-<comment>2</comment>
-<entry key="Score">8</entry>
+<comment>3</comment>
+<entry key="Score">7</entry>
 <entry key="Floor Goal Score">0</entry>
 <entry key="IR Autonomous">0</entry>
 <entry key="Pendulum Score">0</entry>
 <entry key="Hang">0</entry>
-<entry key="Losses">0</entry>
-<entry key="Team Number">2</entry>
+<entry key="Losses">1</entry>
+<entry key="Team Number">3</entry>
 <entry key="Ties">0</entry>
 <entry key="Flag Spin">0</entry>
-<entry key="Team Name">2</entry>
-<entry key="Wins">1</entry>
+<entry key="Team Name">4</entry>
+<entry key="Wins">0</entry>
 <entry key="Ramp">0</entry>
 <entry key="Fatalities">0</entry>
 <entry key="Matches Played">0</entry>
-<entry key="Penalties">7</entry>
+<entry key="Penalties">9</entry>
 </properties>

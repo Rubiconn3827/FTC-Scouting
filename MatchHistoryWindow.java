@@ -37,7 +37,7 @@ public class MatchHistoryWindow extends JFrame implements ActionListener {
     
     public MatchHistoryWindow() {
         matchFiles = new ArrayList<MatchFile>();
-        //load();
+        load("CMSA");
         getContentPane().setLayout(new GridBagLayout());
         setUndecorated(true);
         c.gridy = 0;

@@ -2,5 +2,13 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment>CMSA: 1</comment>
+<entry key="Red Alliance One">1</entry>
+<entry key="Blue Alliance One">2</entry>
 <entry key="Match Number">1</entry>
+<entry key="Red Penalties">9</entry>
+<entry key="Blue Penalties">7</entry>
+<entry key="Red Alliance Two">3</entry>
+<entry key="Blue Alliance Two">4</entry>
+<entry key="Red Points">7</entry>
+<entry key="Blue Points">8</entry>
 </properties>
